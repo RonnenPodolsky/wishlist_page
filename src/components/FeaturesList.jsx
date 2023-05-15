@@ -5,7 +5,7 @@ import Card from './Card';
 
 let userId;
 
-const FeaturesList = ({ title }) => {
+const FeaturesList = ({ title, featuress }) => {
   const [features, setFeatures] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [error, setError] = useState(null);
@@ -22,7 +22,7 @@ const FeaturesList = ({ title }) => {
       headers: { 'Content-Type': 'application/json' },
     });
     const data = await res.json();
-
+    console.log(data.updatedFeatures);
     setFeatures(sortFeatures(data.updatedFeatures));
   }
 
@@ -54,7 +54,9 @@ const FeaturesList = ({ title }) => {
       headers: { 'Content-Type': 'application/json' },
     });
     const data = await res.json();
-    setFeatures((prevFeatures) => [...prevFeatures, data.newFeature]);
+    setFeatures((prevFeatures) =>
+      sortFeatures([...prevFeatures, data.newFeature])
+    );
 
     setNewFeatureTitle('');
     setNewFeatureDescription('');
@@ -65,7 +67,7 @@ const FeaturesList = ({ title }) => {
     async function getFeatures() {
       const res = await fetch('/api/features');
       const data = await res.json();
-      setFeatures(sortFeatures(data.wishlistFeatures));
+      setFeatures(sortFeatures(data));
     }
     getFeatures();
   }, []);

@@ -4,7 +4,7 @@ const Card = ({ feature, userId, voteForFeature }) => {
   return (
     <li
       key={feature.id}
-      className='flex flex-col gap-2 content-center last:border-b-0 border-b-4 border-slate-700 pb-8 pr-8'
+      className='flex flex-col content-center gap-2 pb-8 pr-8 border-b-4 last:border-b-0 border-slate-700'
     >
       <h2 className='text-2xl'>{feature.title}</h2>
       <p className='text-xl'>{feature.description}</p>
