@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   }
 
   else if (req.method === 'POST') {
-    const { title, description } = req.body;
+    const { userId, featureId, title, description } = req.body;
     if (!title || !description) {
       return res.status(400).json({ message: 'Title and description are required' });
     }
@@ -24,41 +24,24 @@ export default async function handler(req, res) {
       const featuresData = await fs.readFile(FEATURES_FILE, 'utf-8');
       const features = JSON.parse(featuresData);
       const newFeature = {
-        id: Date.now(),
+        id: featureId,
         title,
         description,
-        liked: false,
-        votes: 0
+        votes: [userId],
+        "numVotes": 1
       };
-      features.push(newFeature);
+      features.wishlistFeatures.push(newFeature);
       const updatedFeaturesData = JSON.stringify(features, null, 2);
       await fs.writeFile(FEATURES_FILE, updatedFeaturesData);
-      res.status(201).json(newFeature);
+      
+      res.status(201).json({ message: 'Feature created successfully', newFeature });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Error writing feature data' });
     }
   }
-  
-  else if (req.method === 'PUT') {
-    const featureId = Number(req.query.id);
-    try {
-      const featuresData = await fs.readFile(FEATURES_FILE, 'utf-8');
-      const features = JSON.parse(featuresData);
-      const updatedFeatures = features.map(feature => {
-        if (feature.id === featureId) {
-          return { ...feature, liked: true, votes: feature.votes + 1 };
-        }
-        return feature;
-      });
-      const updatedFeaturesData = JSON.stringify(updatedFeatures, null, 2);
-      await fs.writeFile(FEATURES_FILE, updatedFeaturesData);
-      res.status(200).json({ message: 'Feature updated successfully' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Error updating feature data' });
-    }
-  } else {
+
+  else {
     res.status(405).json({ message: 'Method not allowed' });
   }
 }

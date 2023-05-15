@@ -15,7 +15,8 @@ body {
 }
 
 body {
-  background: #f1f5f9
+  background: #f1f5f9;
+  overflow: scroll;
 }
 
 a {
