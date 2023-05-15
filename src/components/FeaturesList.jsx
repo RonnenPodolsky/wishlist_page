@@ -21,8 +21,8 @@ const FeaturesList = ({ title }) => {
 
   return (
     <div className='flex flex-col items-center gap-10 '>
-      <h1 className='text-4xl	'>{title}</h1>
-      <ul className=' border-sky-900 p-4 border-4 flex flex-col gap-6 min-w-[400px] max-w-[800px]	'>
+      <h1 className='text-4xl mt-6	'>{title}</h1>
+      <ul className=' border-sky-900 p-8 border-4 flex flex-col gap-6 min-w-[400px] max-w-[800px] 	'>
         {features?.map((feature) => (
           <Card key={feature.id} feature={feature} userID={userID} />
         ))}
