@@ -6,9 +6,9 @@ const Card = ({ feature, userId, voteForFeature }) => {
       key={feature.id}
       className='flex flex-col content-center gap-2 pb-8 pr-8 border-b-4 last:border-b-0 border-slate-700'
     >
-      <h2 className='text-3xl'>{feature.title}</h2>
-      <p className='text-xl'>{feature.description}</p>
-      <p>הצבעות: {feature.numVotes}</p>
+      <h2 className='text-2xl'>{feature.title}</h2>
+      <p className='text-md'>{feature.description}</p>
+      <p className='text-sm'>הצבעות: {feature.numVotes}</p>
       <button
         onClick={() =>
           !feature.votes?.includes(userId)
