@@ -1,8 +1,8 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-const FEATURES_FILE = path.join(process.cwd(), 'src', 'data', 'features.json');
-const VOTES_FILE = path.join(process.cwd(), 'src', 'data', 'votes.json');
+const FEATURES_FILE = path.join(process.cwd(), 'tmp', 'features.json');
+const VOTES_FILE = path.join(process.cwd(), 'tmp', 'votes.json');
 const ACTIONS = {
     "remove": -1,
     "upvote": 1
