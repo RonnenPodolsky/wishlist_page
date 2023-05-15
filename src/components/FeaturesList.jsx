@@ -74,28 +74,15 @@ const FeaturesList = ({ title }) => {
 
   return (
     <div className='flex flex-col items-center gap-10 '>
-      <h1 className='mt-6 text-4xl '>{title}</h1>
-      <ul className=' border-slate-700 p-8  border-4 flex flex-col gap-6 min-w-[350px] max-w-[800px] 	'>
-        {features?.map((feature) => (
-          <Card
-            key={feature.id}
-            feature={feature}
-            userId={userId}
-            voteForFeature={voteForFeature}
-          />
-        ))}
-      </ul>
+      <h1 className='mt-10 text-4xl '>{title}</h1>
       <button
-        className={`w-1/2 px-4 py-2 ${
-          !showForm ? 'mb-16' : ''
-        } text-2xl font-bold text-white rounded bg-slate-700 hover:bg-slate-500`}
+        className={`w-1/2 px-4 py-2 text-2xl font-bold text-white rounded bg-slate-700 hover:bg-slate-500`}
         onClick={() => {
           setShowForm((prev) => !prev);
         }}
       >
         {'הוספת בקשה'}
       </button>
-
       {showForm && (
         <AddFeatureForm
           addNewFeature={addNewFeature}
@@ -106,6 +93,16 @@ const FeaturesList = ({ title }) => {
           error={error}
         />
       )}
+      <ul className=' border-slate-700 p-8 mb-8 border-4 flex flex-col gap-6 min-w-[350px] max-w-[800px] 	'>
+        {features?.map((feature) => (
+          <Card
+            key={feature.id}
+            feature={feature}
+            userId={userId}
+            voteForFeature={voteForFeature}
+          />
+        ))}
+      </ul>
     </div>
   );
 };
