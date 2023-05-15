@@ -14,7 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='h-screen	 border-sky-100 bg-slate-100 border-8 flex flex-col  items-center max-w-screen-lg mx-auto'>
-        <FeaturesList />
+        <FeaturesList title="בקשות פיצ'רים" />
       </main >
     </>
   )

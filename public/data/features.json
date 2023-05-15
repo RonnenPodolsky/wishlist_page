@@ -1,0 +1,49 @@
+{
+  "wishlistItems": [
+    {
+      "id": 1,
+      "title": "הוספת מצב כהה",
+      "description": "הוספת מצב כהה בלחיצת כפתור",
+      "votes": [
+        {
+          "userId": "user1",
+          "liked": true
+        },
+        {
+          "userId": "user2",
+          "liked": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "גרסת מובייל",
+      "description": "גרסת מובייל לאייפון ואנדרוריד",
+      "votes": [
+        {
+          "userId": "user1",
+          "liked": false
+        },
+        {
+          "userId": "user2",
+          "liked": true
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "חיבור לקלנדר",
+      "description": "צפייה בקלנדר באפליקציה עם השיחות",
+      "votes": [
+        {
+          "userId": "user1",
+          "liked": true
+        },
+        {
+          "userId": "user2",
+          "liked": true
+        }
+      ]
+    }
+  ]
+}
