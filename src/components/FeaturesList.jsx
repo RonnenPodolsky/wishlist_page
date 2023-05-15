@@ -12,8 +12,10 @@ const FeaturesList = ({ title, featuress }) => {
   const [newFeatureTitle, setNewFeatureTitle] = useState('');
   const [newFeatureDescription, setNewFeatureDescription] = useState('');
 
-  const sortFeatures = (features) =>
-    features.sort((a, b) => b.numVotes - a.numVotes);
+  // wasnt in product spec, can easily be removed or changed to date sorting etc.
+  const sortFeatures = (features) => {
+    return features.sort((a, b) => b.numVotes - a.numVotes);
+  };
 
   const voteForFeature = async (featureId, action) => {
     const res = await fetch(`/api/features/${featureId}/vote`, {

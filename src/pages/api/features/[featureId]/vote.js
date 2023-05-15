@@ -6,9 +6,8 @@ const VOTES_FILE = path.join(process.cwd(), 'src', 'data', 'votes.json');
 
 export default async function handler(req, res) {
     if (req.method === 'PUT') {
-        const { action } = req.body;
+        const { action, userId } = req.body;
         const { featureId } = req.query;
-        const { userId } = req.body;
 
         try {
             const featuresData = await fs.readFile(FEATURES_FILE, 'utf-8');
@@ -40,11 +39,11 @@ export default async function handler(req, res) {
             await fs.writeFile(FEATURES_FILE, updatedFeaturesData);
             await fs.writeFile(VOTES_FILE, updatedVotesData);
 
-            updatedFeatures = updatedFeatures.map((feature) => {
+            featuresWithVotes = updatedFeatures.map((feature) => {
                 const featureVotes = votes[feature.id] ? votes[feature.id].votes : [];
                 return { ...feature, votes: featureVotes };
             })
-            res.status(200).json({ message: 'Feature updated successfully', updatedFeatures });
+            res.status(200).json({ message: 'Feature updated successfully', featuresWithVotes });
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Error updating feature data' });
