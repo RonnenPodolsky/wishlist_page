@@ -12,10 +12,12 @@ export default async function handler(req, res) {
       const features = JSON.parse(featuresData);
       const votesData = await fs.readFile(VOTES_FILE, 'utf-8');
       const votes = JSON.parse(votesData);
+
       const featuresWithVotes = features.wishlistFeatures.map(feature => {
         const featureVotes = votes[feature.id] ? votes[feature.id].votes : [];
         return { ...feature, votes: featureVotes };
       });
+      
       res.status(200).json(featuresWithVotes);
     } catch (error) {
       console.log(error.message);
