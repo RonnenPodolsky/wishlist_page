@@ -8,8 +8,8 @@ export default async function handler(req, res) {
   if (req.method === 'GET') {
     try {
       const featuresData = await fs.readFile(FEATURES_FILE, 'utf-8');
-      const features = JSON.parse(featuresData);
       const votesData = await fs.readFile(VOTES_FILE, 'utf-8');
+      const features = JSON.parse(featuresData);
       const votes = JSON.parse(votesData);
 
       const featuresWithVotes = features.wishlistFeatures.map(feature => {
@@ -19,7 +19,7 @@ export default async function handler(req, res) {
 
       res.status(200).json(featuresWithVotes);
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
       res.status(500).json({ message: 'Error reading features data' });
     }
   }
@@ -32,8 +32,8 @@ export default async function handler(req, res) {
 
     try {
       const featuresData = await fs.readFile(FEATURES_FILE, 'utf-8');
-      const features = JSON.parse(featuresData);
       const votesData = await fs.readFile(VOTES_FILE, 'utf-8');
+      const features = JSON.parse(featuresData);
       let votes = JSON.parse(votesData);
 
       let newFeature = {

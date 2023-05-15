@@ -73,11 +73,9 @@ const FeaturesList = ({ title, featuress }) => {
   }, []);
 
   useEffect(() => {
-    userId = localStorage.getItem('id') || uuidv4();
-    localStorage.setItem('id', userId);
+    userId = localStorage.getItem('user-id') || uuidv4();
+    localStorage.setItem('user-id', userId);
   }, []);
-
-  console.log(features);
 
   return (
     <div className='flex flex-col items-center gap-10 '>
