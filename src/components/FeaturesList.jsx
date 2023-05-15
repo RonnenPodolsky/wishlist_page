@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import AddFeatureForm from './AddFeatureForm';
 import Card from './Card';
 
-const userId = '1a276066-14f8-4bd2-8e81-7349f79f8d17';
+let userId;
 
 const FeaturesList = ({ title }) => {
   const [features, setFeatures] = useState([]);
@@ -68,6 +68,11 @@ const FeaturesList = ({ title }) => {
       setFeatures(sortFeatures(data.wishlistFeatures));
     }
     getFeatures();
+  }, []);
+
+  useEffect(() => {
+    userId = localStorage.getItem('id') || uuidv4();
+    localStorage.setItem('id', userId);
   }, []);
 
   console.log(features);

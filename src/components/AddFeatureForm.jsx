@@ -9,7 +9,9 @@ const AddFeatureForm = ({
 }) => {
   return (
     <form className='flex flex-col w-1/2 gap-2 mb-8' onSubmit={addNewFeature}>
-      <label htmlFor='newFeatureTitle'>כותרת:</label>
+      <label htmlFor='newFeatureTitle' className='text-xl'>
+        כותרת:
+      </label>
       <input
         className='p-2'
         type='text'
@@ -17,7 +19,9 @@ const AddFeatureForm = ({
         value={newFeatureTitle}
         onChange={(e) => setNewFeatureTitle(e.target.value)}
       />
-      <label htmlFor='newFeatureDescription'>תיאור:</label>
+      <label htmlFor='newFeatureDescription' className='text-xl'>
+        תיאור:
+      </label>
       <textarea
         className='p-2'
         rows={6}
