@@ -13,7 +13,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='min-h-screen border-sky-100 bg-slate-100 border-8 flex flex-col  items-center max-w-screen-lg mx-auto'>
+      <main className='min-h-screen  bg-slate-200  flex flex-col  items-center max-w-screen-lg mx-auto'>
         <FeaturesList title="בקשות פיצ'רים" />
       </main >
     </>
