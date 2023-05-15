@@ -1,12 +1,17 @@
 import { useEffect, useState } from 'react';
 
+const userID = 'user1';
 const FeaturesList = ({ title }) => {
   const [features, setFeatures] = useState([]);
 
   async function getFeatures() {
     const res = await fetch('/data/features.json');
     const data = await res.json();
-    setFeatures(data.wishlistItems);
+    const sortedByVotesWishlistItems = data.wishlistItems.sort(
+      (a, b) => b.votes.length - a.votes.length
+    );
+
+    setFeatures(sortedByVotesWishlistItems);
   }
   useEffect(() => {
     getFeatures();
@@ -24,8 +29,13 @@ const FeaturesList = ({ title }) => {
             <p className='text-xl'>{feature.description}</p>
             <p>הצבעות: {feature.votes.length}</p>
             <button
+              disabled={feature.votes.includes(userID)}
               onClick={() => voteForFeature(feature.id)}
-              className={feature.liked ? 'liked' : ''}
+              className={
+                feature.votes.includes(userID)
+                  ? 'border-2 border-green-300'
+                  : ''
+              }
             >
               👍
             </button>

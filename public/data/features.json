@@ -4,46 +4,19 @@
       "id": 1,
       "title": "הוספת מצב כהה",
       "description": "הוספת מצב כהה בלחיצת כפתור",
-      "votes": [
-        {
-          "userId": "user1",
-          "liked": true
-        },
-        {
-          "userId": "user2",
-          "liked": false
-        }
-      ]
+      "votes": ["user1"]
     },
     {
       "id": 2,
       "title": "גרסת מובייל",
       "description": "גרסת מובייל לאייפון ואנדרוריד",
-      "votes": [
-        {
-          "userId": "user1",
-          "liked": false
-        },
-        {
-          "userId": "user2",
-          "liked": true
-        }
-      ]
+      "votes": ["user1", "user2", "user3", "user4", "user5", "user6"]
     },
     {
       "id": 3,
       "title": "חיבור לקלנדר",
       "description": "צפייה בקלנדר באפליקציה עם השיחות",
-      "votes": [
-        {
-          "userId": "user1",
-          "liked": true
-        },
-        {
-          "userId": "user2",
-          "liked": true
-        }
-      ]
+      "votes": ["user2", "user3", "user4", "user5", "user6"]
     }
   ]
 }
