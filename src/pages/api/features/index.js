@@ -6,7 +6,6 @@ const VOTES_FILE = path.join(process.cwd(), 'src', 'data', 'votes.json');
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
-
     try {
       const featuresData = await fs.readFile(FEATURES_FILE, 'utf-8');
       const features = JSON.parse(featuresData);
@@ -17,7 +16,7 @@ export default async function handler(req, res) {
         const featureVotes = votes[feature.id] ? votes[feature.id].votes : [];
         return { ...feature, votes: featureVotes };
       });
-      
+
       res.status(200).json(featuresWithVotes);
     } catch (error) {
       console.log(error.message);

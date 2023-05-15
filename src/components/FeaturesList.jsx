@@ -15,18 +15,17 @@ const FeaturesList = ({ title, featuress }) => {
   const sortFeatures = (features) =>
     features.sort((a, b) => b.numVotes - a.numVotes);
 
-  async function voteForFeature(featureId, action) {
+  const voteForFeature = async (featureId, action) => {
     const res = await fetch(`/api/features/${featureId}/vote`, {
       method: 'PUT',
       body: JSON.stringify({ userId, action }),
       headers: { 'Content-Type': 'application/json' },
     });
     const data = await res.json();
-    console.log(data.updatedFeatures);
     setFeatures(sortFeatures(data.updatedFeatures));
-  }
+  };
 
-  async function addNewFeature(e) {
+  const addNewFeature = async (e) => {
     e.preventDefault();
     if (!newFeatureTitle && !newFeatureDescription) {
       setError('אנא הוסף כותרת ותיאור!');
@@ -61,7 +60,7 @@ const FeaturesList = ({ title, featuress }) => {
     setNewFeatureTitle('');
     setNewFeatureDescription('');
     setShowForm(false);
-  }
+  };
 
   useEffect(() => {
     async function getFeatures() {
